@@ -1,0 +1,82 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #145886, #ffffff);
+  /* height: calc(100vh - 60px); */
+  /* Adjust this based on the navbar height */
+  background-image: url("C:\Users\HP\Documents\CA Demo Website\CA project\src\assets\image\bg-image 1.jpg");
+  /* background-image: url("C:\Users\HP\Documents\CA Demo Website\CA project\src\assets\image\bg-image2.jpg"); */
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding: 10px;
+  width: 100vw;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  margin-right: 54px;
+}
+
+/* Add a blurred background image */
+.home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("C:/Users/HP/Documents/CA Demo Website/CA project/src/assets/image/Pitaximage.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  filter: blur(25px); /* Adjust blur value as needed */
+  /* background-color: rgba(0, 0, 0, 0.3); Optional dark overlay for visibility */
+  z-index: -1; /* Ensures it's behind other content */
+}
+
+/* Content container */
+.home-content {
+  max-width: 80%;
+  color: #fff;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+}
+
+/* Heading styling */
+h1 {
+  color: #145886;
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Paragraph styling */
+p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #145886;
+
+}
+
+/* CTA Button styling */
+.cta-button {
+  
+  background-color: #F37920;/* background: linear-gradient(135deg, #ffcc00, #ffaa00); */
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Button hover effect */
+.cta-button:hover {
+  background-color: #55B848;
+  /* background: linear-gradient(135deg, #00e6d3, #00bfa5); */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
