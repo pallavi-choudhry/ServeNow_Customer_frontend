@@ -31,8 +31,8 @@ const Login = () => {
         localStorage.setItem('user', 'true');
         setMessage('Login successful!');
 
-        // ✅ Redirect to /booking if coming from Book Now
-        const redirectTo = location.state?.fromBook ? '/' : '/dashboard';
+        const redirectServiceId = location.state?.selectedServiceId || 1;
+        const redirectTo = location.state?.fromBook ? `/services/${redirectServiceId}` : '/dashboard';
         navigate(redirectTo, { replace: true });
       }
     } catch (error) {

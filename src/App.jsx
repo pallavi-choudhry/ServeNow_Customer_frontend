@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
 import About from './components/About';
 // import serviceDetail from './components/serviceDetail/acInstallation';
+import ProvidersByService from './components/ProvidersByService';
 
 function App() {
   const location = useLocation();
@@ -36,7 +37,7 @@ function App() {
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/footer" element={<Footer />} />
         {/* <Route path="/bookingpage" element={<BookingPage />} /> */}
-        <Route path="/services/:serviceId" element={<serviceDetail />} />
+        <Route path="/services/:serviceId" element={<ProvidersByService />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
 
