@@ -37,7 +37,7 @@ const ProvidersByService = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
 	const [selectedProvider, setSelectedProvider] = useState(null);
-	const [customer, setCustomer] = useState({ name: '', phone: '', email: '', address: '' });
+	const [customer, setCustomer] = useState({ name: localStorage.getItem('customerName') || '', phone: '', email: localStorage.getItem('customerEmail') || '', address: '' });
 	const [notes, setNotes] = useState('');
 	const [submitting, setSubmitting] = useState(false);
 	const serviceName = useMemo(() => prettyServiceFromId(serviceId), [serviceId]);

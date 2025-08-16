@@ -381,7 +381,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/bookings');
+        const email = localStorage.getItem('customerEmail');
+        const url = email ? `http://localhost:5000/api/bookings?customerEmail=${encodeURIComponent(email)}` : 'http://localhost:5000/api/bookings';
+        const res = await axios.get(url);
         setBookings(res.data);
       } catch (err) {
         setError('Error loading bookings');

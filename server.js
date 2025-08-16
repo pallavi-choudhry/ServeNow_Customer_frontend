@@ -89,6 +89,27 @@ app.post('/api/customer/register', async (req, res) => {
 	}
 });
 
+// Customer login
+app.post('/api/customer/login', async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		if (!email || !password) {
+			return res.status(400).json({ message: 'Email and password are required' });
+		}
+		const customer = customers.find((c) => c.email === email);
+		if (!customer) {
+			return res.status(401).json({ message: 'Invalid credentials' });
+		}
+		const ok = await bcrypt.compare(password, customer.passwordHash);
+		if (!ok) {
+			return res.status(401).json({ message: 'Invalid credentials' });
+		}
+		return res.status(200).json({ id: customer.id, name: customer.name, email: customer.email, phone: customer.phone, role: customer.role });
+	} catch (err) {
+		return res.status(500).json({ message: 'Server error' });
+	}
+});
+
 // Providers list (optional filter by service slug)
 app.get('/api/providers', (req, res) => {
 	const { service } = req.query;

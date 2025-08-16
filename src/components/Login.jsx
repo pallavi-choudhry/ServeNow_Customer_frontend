@@ -21,7 +21,7 @@ const Login = () => {
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/admin/login', formData, {
+      const response = await axios.post('http://localhost:5000/api/customer/login', formData, {
         headers: {
           'Content-Type': 'application/json'
         }
@@ -29,6 +29,8 @@ const Login = () => {
 
       if (response.status === 200) {
         localStorage.setItem('user', 'true');
+        localStorage.setItem('customerEmail', response.data?.email || formData.email);
+        if (response.data?.name) localStorage.setItem('customerName', response.data.name);
         setMessage('Login successful!');
 
         const redirectServiceId = location.state?.selectedServiceId || 1;
