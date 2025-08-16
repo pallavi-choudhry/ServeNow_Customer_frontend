@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function Register({ onSwitch }) {
+function Register() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,7 +26,9 @@ function Register({ onSwitch }) {
       const res = await axios.post('http://localhost:5000/api/customer/register', formData);
       if (res.status === 200 || res.status === 201) {
         alert('Registration successful!');
-        onSwitch(); // Redirect to login
+        localStorage.setItem('customerEmail', formData.email);
+        localStorage.setItem('customerName', formData.name);
+        navigate('/login');
       }
     } catch (err) {
       console.error(err);

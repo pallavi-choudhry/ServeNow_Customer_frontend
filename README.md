@@ -1,12 +1,20 @@
-# React + Vite
+# Serve Now - Customer Booking Flow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Quickstart:
 
-Currently, two official plugins are available:
+- Install deps: `npm install`
+- Start API server: `npm run start` (starts Express on http://localhost:5000)
+- Start frontend: `npm run dev` (starts Vite on http://localhost:5173)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Endpoints (temporary in-memory):
+- POST /api/admin/login
+- POST /api/customer/register
+- GET /api/providers?service=<slug>
+- GET /api/providers/:id
+- POST /api/bookings
+- GET /api/bookings
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Flow:
+- On the homepage, click Providers or Book Now to view providers for a given service.
+- Select a provider; a modal appears to enter customer details (name, phone, optional email/address/notes).
+- Confirm booking; you are redirected to the Dashboard where bookings display including customer info.

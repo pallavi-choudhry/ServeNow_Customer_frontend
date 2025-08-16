@@ -29,7 +29,7 @@ const LoginPromptModal = ({ onClose, onLogin }) => {
           >
             Login
           </button>
-          <Link to="/signup">
+          <Link to="/register">
             <button className="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50">
               Sign Up
             </button>
@@ -94,22 +94,17 @@ const Home = () => {
   const [selectedService, setSelectedService] = useState(null);
   const navigate = useNavigate();
 
- const handleBookNow = (service) => {
+   const handleBookNow = (service) => {
     if (isLoggedIn()) {
-      localStorage.setItem("selectedService", JSON.stringify(service));
-      navigate("/login"); // ✅ go directly to booking page if logged in
+      navigate(`/services/${service.id}`);
     } else {
       setSelectedService(service);
-      setShowModal(false); // ✅ show popup modal if not logged in
+      setShowModal(true);
     }
   };
 
   const handleLoginRedirect = () => {
-    if (selectedService) {
-      localStorage.setItem("selectedService", JSON.stringify(selectedService));
-    }
-    setShowModal(true);
-    navigate("/login", { state: { from: "/bookingpage" } });
+    navigate("/login", { state: { fromBook: true, selectedServiceId: selectedService?.id } });
   };
 
   return (
@@ -154,17 +149,17 @@ const Home = () => {
                     <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
                   </div>
                   <div className="flex justify-center gap-3 mt-4">
-                    <button
-                      onClick={() => handleBookNow(service)}
-                      className="bg-blue-600 px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition"
-                    >
-                      Book Now
-                    </button>
-                    <Link to={`/services/${service.id}`}>
-                      <button className="border border-white px-4 py-2 rounded-full text-sm hover:bg-white hover:text-black transition">
-                        More
-                      </button>
-                    </Link>
+                                         <button
+                       onClick={() => handleBookNow(service)}
+                       className="bg-blue-600 px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition"
+                     >
+                       Book Now
+                     </button>
+                     <Link to={`/services/${service.id}`}>
+                       <button className="border border-white px-4 py-2 rounded-full text-sm hover:bg-white hover:text-black transition">
+                         Providers
+                       </button>
+                     </Link>
                   </div>
                 </div>
               </div>

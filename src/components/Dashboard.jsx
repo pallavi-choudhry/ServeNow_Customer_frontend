@@ -381,7 +381,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await axios.post('http://localhost:5000/api/bookings/create');
+        const email = localStorage.getItem('customerEmail');
+        const url = email ? `http://localhost:5000/api/bookings?customerEmail=${encodeURIComponent(email)}` : 'http://localhost:5000/api/bookings';
+        const res = await axios.get(url);
         setBookings(res.data);
       } catch (err) {
         setError('Error loading bookings');
@@ -405,15 +407,16 @@ const Dashboard = () => {
       ) : (
         bookings.map(booking => (
           <div
-            key={booking._id}
+            key={booking.id}
             className="bg-white shadow p-4 rounded mb-4 border"
           >
             <p><strong>Service:</strong> {booking.serviceType}</p>
-            <p><strong>Provider:</strong> {booking.providerId?.name}</p>
-            <p><strong>Location:</strong> {booking.providerId?.location}</p>
+            <p><strong>Provider:</strong> {booking.providerName}</p>
             <p><strong>Status:</strong> {booking.status}</p>
             <p><strong>Time:</strong> {new Date(booking.scheduledTime).toLocaleString()}</p>
             <p><strong>Price:</strong> ₹{booking.price}</p>
+            <p><strong>Customer:</strong> {booking.customer?.name} ({booking.customer?.phone})</p>
+            {booking.customer?.address && <p><strong>Address:</strong> {booking.customer.address}</p>}
             {booking.emergency && <p className="text-red-500">Emergency Booking</p>}
           </div>
         ))
