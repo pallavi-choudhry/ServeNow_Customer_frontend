@@ -14,7 +14,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
-    "axios": "^1.9.0",
+    "axios": "^1.11.0",
     "bcrypt": "^6.0.0",
     "express": "^5.1.0",
     "lucide-react": "^0.512.0",
@@ -34,7 +34,7 @@
     "globals": "^16.0.0",
     "postcss": "^8.5.6",
     "react-router-dom": "^7.6.0",
-    "tailwindcss": "^4.1.10",
+    "tailwindcss": "^4.1.11",
     "vite": "^6.3.5"
   }
 }
