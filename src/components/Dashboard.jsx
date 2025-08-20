@@ -55,10 +55,12 @@ const Dashboard = () => {
         throw new Error('Missing authentication token');
       }
 
-      const res = await axios.get('http://localhost:5000/api/provider/approved', {
+      const res = await axios.get('http://localhost:5000/api/', {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
+          credentials: true
+        
         },
       });
 
